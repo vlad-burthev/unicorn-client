@@ -34,7 +34,6 @@ const GetProviderPage: FC<GetProviderPageProps> = () => {
   };
 
   if (data?.length === 0) {
-    // Corrected typo here
     return (
       <h2 className={styles["empty-title"]}>
         Apparently someone forgot to fill out the table

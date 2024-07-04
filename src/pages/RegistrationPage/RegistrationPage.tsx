@@ -6,7 +6,6 @@ import { useRegistrationMutation } from "../../api/userApi";
 import { useAppDispatch } from "../../hooks/storeHooks";
 import { Link, useNavigate } from "react-router-dom";
 import { setLoginUser } from "../../store/userSlice/userSlice";
-import { motion } from "framer-motion";
 import AuthForm from "../../components/AuthForm/AuthForm";
 import { Helmet } from "react-helmet-async";
 import ErrorAlert from "../../components/ErrorAlert/ErrorAlert";

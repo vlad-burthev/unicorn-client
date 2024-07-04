@@ -9,7 +9,6 @@ interface ErrorAlertProps {
 }
 
 const ErrorAlert: FC<ErrorAlertProps> = ({ error }) => {
-  console.log((error as any)?.data?.message?.error);
   return (
     <>
       <div className={styles["error-block"]}>

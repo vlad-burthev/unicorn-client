@@ -7,7 +7,6 @@ import { setEmail, setLoginUser } from "../store/userSlice/userSlice";
 const useAuthCheck = () => {
   const [checkAuth, { data, isSuccess }] = useCheckAuthMutation();
   const dispatch = useAppDispatch();
-  console.log(data);
   useEffect(() => {
     const check = async () => {
       await checkAuth("");
