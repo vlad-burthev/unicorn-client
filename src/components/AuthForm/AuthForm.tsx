@@ -21,6 +21,7 @@ interface AuthFormProps {
   };
   isLoading: boolean;
   isError: boolean;
+  submitBtnTitle: string;
 }
 
 const AuthForm: FC<AuthFormProps> = ({
@@ -30,6 +31,7 @@ const AuthForm: FC<AuthFormProps> = ({
   userData,
   isLoading,
   isError,
+  submitBtnTitle,
 }) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   return (
@@ -78,7 +80,7 @@ const AuthForm: FC<AuthFormProps> = ({
       </div>
 
       <button className={styles["submit__btn"]} type="submit">
-        <span className={isLoading ? styles.hidden : ""}>Login</span>
+        <span className={isLoading ? styles.hidden : ""}>{submitBtnTitle}</span>
         {isLoading && (
           <span className={styles.loader}>
             <Loader />

@@ -68,6 +68,7 @@ const AuthPage: FC<AuthPageProps> = () => {
             handleSubmit={handleSubmit}
             isLoading={isLoading}
             isError={isError}
+            submitBtnTitle={"login"}
           />
           <div className={styles.redirect}>
             <span>Not registered yet? </span>

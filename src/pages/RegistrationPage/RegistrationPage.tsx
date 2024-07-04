@@ -53,6 +53,7 @@ const RegistrationPage: FC<RegistrationPageProps> = () => {
             handleSubmit={handleSubmit}
             isLoading={isLoading}
             isError={isError}
+            submitBtnTitle={"registration"}
           />
           <div className={styles.redirect}>
             <span>Already have an account? </span>
