@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: 1fr minmax(auto, 600px) 1fr;
   grid-template-rows: minmax(auto, 100px) 2fr minmax(auto, 100px);
-  height: 100vh;
+  height: max-content;
 }
 
 .form__container {
