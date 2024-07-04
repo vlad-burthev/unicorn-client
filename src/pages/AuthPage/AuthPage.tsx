@@ -6,7 +6,6 @@ import styles from "./AuthPage.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../../api/userApi";
 import AuthForm from "../../components/AuthForm/AuthForm";
-import { motion } from "framer-motion";
 import { useAppDispatch } from "../../hooks/storeHooks";
 import { setLoginUser } from "../../store/userSlice/userSlice";
 import { Helmet } from "react-helmet-async";

@@ -5,7 +5,7 @@ import styles from "./RegistrationPage.module.scss";
 import { useRegistrationMutation } from "../../api/userApi";
 import { useAppDispatch } from "../../hooks/storeHooks";
 import { Link, useNavigate } from "react-router-dom";
-import { setLoginUser } from "../../store/userSlice/userSlice";
+import { setEmail, setLoginUser } from "../../store/userSlice/userSlice";
 import AuthForm from "../../components/AuthForm/AuthForm";
 import { Helmet } from "react-helmet-async";
 import ErrorAlert from "../../components/ErrorAlert/ErrorAlert";
@@ -21,7 +21,7 @@ const RegistrationPage: FC<RegistrationPageProps> = () => {
     setUserData((prev) => ({ ...prev, email: e.target.value.trim() }));
   };
 
-  const [registration, { isLoading, isSuccess, isError, error }] =
+  const [registration, { data, isLoading, isSuccess, isError, error }] =
     useRegistrationMutation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -30,14 +30,16 @@ const RegistrationPage: FC<RegistrationPageProps> = () => {
     e.preventDefault();
     await registration(userData);
   };
-
+  console.log(data);
   useEffect(() => {
     if (isSuccess) {
       setUserData({ email: "", password: "" });
       navigate("/");
       dispatch(setLoginUser());
+      dispatch(setEmail(data!));
     }
   }, [isSuccess]);
+
   return (
     <>
       <Helmet>
