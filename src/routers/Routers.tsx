@@ -1,5 +1,5 @@
 import { lazy, type FC, Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 //components
 
 const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
@@ -21,6 +21,7 @@ interface RoutersProps {}
 
 const Routers: FC<RoutersProps> = () => {
   const { isLogin } = useAppSelector((state) => state.user);
+
   return (
     <Suspense fallback={false}>
       <Routes>
@@ -41,6 +42,7 @@ const Routers: FC<RoutersProps> = () => {
             <Route path="/registration" element={<RegistrationPage />} />
           </>
         )}
+        <Route path="*" element={<Navigate to={isLogin ? "/" : "/login"} />} />
       </Routes>
     </Suspense>
   );
