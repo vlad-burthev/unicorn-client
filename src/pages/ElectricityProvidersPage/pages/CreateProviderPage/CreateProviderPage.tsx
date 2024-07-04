@@ -4,6 +4,7 @@ import styles from "./CreateProviderPage.module.scss";
 import { useCreateProviderMutation } from "../../../../api/electricityProvidersApi";
 import ProviderForm from "../../../../components/ProviderForm/ProviderForm";
 import ErrorAlert from "../../../../components/ErrorAlert/ErrorAlert";
+import { Helmet } from "react-helmet-async";
 
 interface CreateProviderPageProps {}
 
@@ -31,19 +32,24 @@ const CreateProviderPage: FC<CreateProviderPageProps> = () => {
   }, [isSuccess]);
 
   return (
-    <div className={styles["create-provider"]}>
-      {error && <ErrorAlert error={error} />}
+    <>
+      <Helmet>
+        <title>Electricity Providers: Create Provider - UServer</title>
+      </Helmet>
+      <div className={styles["create-provider"]}>
+        {error && <ErrorAlert error={error} />}
 
-      <ProviderForm
-        isError={isError}
-        isLoading={isLoading}
-        handleSubmit={handleSubmit(onSubmitCreateForm)}
-        defaultValue={true}
-        register={register}
-        errors={errors}
-        btnTitle={"Create"}
-      />
-    </div>
+        <ProviderForm
+          isError={isError}
+          isLoading={isLoading}
+          handleSubmit={handleSubmit(onSubmitCreateForm)}
+          defaultValue={true}
+          register={register}
+          errors={errors}
+          btnTitle={"Create"}
+        />
+      </div>
+    </>
   );
 };
 

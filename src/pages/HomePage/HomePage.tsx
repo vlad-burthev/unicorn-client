@@ -12,7 +12,7 @@ const HomePage: FC = () => {
   return (
     <>
       <Helmet>
-        <title>Home - UServer</title>
+        <title>Home: Charts - UServer</title>
       </Helmet>
       <div className={styles.home}>
         {isSuccess && <ProviderChart data={data} />}
