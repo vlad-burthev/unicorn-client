@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 import { useAppDispatch } from "../../hooks/storeHooks";
 import { setLoginUser } from "../../store/userSlice/userSlice";
 import { Helmet } from "react-helmet-async";
+import ErrorAlert from "../../components/ErrorAlert/ErrorAlert";
 
 interface AuthPageProps {}
 
@@ -47,17 +48,7 @@ const AuthPage: FC<AuthPageProps> = () => {
       <div className={styles.auth}>
         {error && (
           <div className={styles["error-block"]}>
-            {(error as any)?.data?.message?.error.map((error: any) => (
-              <motion.div
-                className={styles["error-message"]}
-                key={error.msg}
-                initial={{ opacity: 0, transform: "scale(0)" }}
-                animate={{ opacity: 1, transform: "scale(1)" }}
-                exit={{ opacity: 0, transform: "scale(0)" }}
-              >
-                {error.msg}
-              </motion.div>
-            ))}
+            {error && <ErrorAlert error={error} />}
           </div>
         )}
         <div className={styles.form__container}>
