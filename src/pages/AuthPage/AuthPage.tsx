@@ -9,6 +9,7 @@ import AuthForm from "../../components/AuthForm/AuthForm";
 import { motion } from "framer-motion";
 import { useAppDispatch } from "../../hooks/storeHooks";
 import { setLoginUser } from "../../store/userSlice/userSlice";
+import { Helmet } from "react-helmet-async";
 
 interface AuthPageProps {}
 
@@ -39,37 +40,42 @@ const AuthPage: FC<AuthPageProps> = () => {
   }, [isSuccess]);
 
   return (
-    <div className={styles.auth}>
-      {error && (
-        <div className={styles["error-block"]}>
-          {(error as any)?.data?.message?.error.map((error: any) => (
-            <motion.div
-              className={styles["error-message"]}
-              key={error.msg}
-              initial={{ opacity: 0, transform: "scale(0)" }}
-              animate={{ opacity: 1, transform: "scale(1)" }}
-              exit={{ opacity: 0, transform: "scale(0)" }}
-            >
-              {error.msg}
-            </motion.div>
-          ))}
-        </div>
-      )}
-      <div className={styles.form__container}>
-        <AuthForm
-          userData={userData}
-          changeEmail={changeEmail}
-          changePassword={changePassword}
-          handleSubmit={handleSubmit}
-          isLoading={isLoading}
-          isError={isError}
-        />
-        <div className={styles.redirect}>
-          <span>Not registered yet? </span>
-          <Link to={"/registration"}>Create an account</Link>
+    <>
+      <Helmet>
+        <title>Login - UServer</title>
+      </Helmet>
+      <div className={styles.auth}>
+        {error && (
+          <div className={styles["error-block"]}>
+            {(error as any)?.data?.message?.error.map((error: any) => (
+              <motion.div
+                className={styles["error-message"]}
+                key={error.msg}
+                initial={{ opacity: 0, transform: "scale(0)" }}
+                animate={{ opacity: 1, transform: "scale(1)" }}
+                exit={{ opacity: 0, transform: "scale(0)" }}
+              >
+                {error.msg}
+              </motion.div>
+            ))}
+          </div>
+        )}
+        <div className={styles.form__container}>
+          <AuthForm
+            userData={userData}
+            changeEmail={changeEmail}
+            changePassword={changePassword}
+            handleSubmit={handleSubmit}
+            isLoading={isLoading}
+            isError={isError}
+          />
+          <div className={styles.redirect}>
+            <span>Not registered yet? </span>
+            <Link to={"/registration"}>Create an account</Link>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
