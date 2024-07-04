@@ -9,17 +9,18 @@ interface ErrorAlertProps {
 }
 
 const ErrorAlert: FC<ErrorAlertProps> = ({ error }) => {
+  console.log((error as any)?.data?.message?.error);
   return (
     <>
       <div className={styles["error-block"]}>
-        {typeof (error as any)?.data?.message === "string" ? (
+        {typeof (error as any)?.data?.message?.error === "string" ? (
           <motion.div
             className={styles["server-error"]}
             initial={{ opacity: 0, transform: "scale(0)" }}
             animate={{ opacity: 1, transform: "scale(1)" }}
             exit={{ opacity: 0, transform: "scale(0)" }}
           >
-            {(error as any)?.data?.message}
+            {(error as any)?.data?.message?.error}
           </motion.div>
         ) : (
           (error as any)?.data?.message?.error.map((error: any) => (

@@ -9,6 +9,7 @@ import { setLoginUser } from "../../store/userSlice/userSlice";
 import { motion } from "framer-motion";
 import AuthForm from "../../components/AuthForm/AuthForm";
 import { Helmet } from "react-helmet-async";
+import ErrorAlert from "../../components/ErrorAlert/ErrorAlert";
 
 interface RegistrationPageProps {}
 
@@ -44,21 +45,7 @@ const RegistrationPage: FC<RegistrationPageProps> = () => {
         <title>Registration - UServer</title>
       </Helmet>
       <div className={styles.auth}>
-        {error && (
-          <div className={styles["error-block"]}>
-            {(error as any)?.data?.message?.error.map((error: any) => (
-              <motion.div
-                className={styles["error-message"]}
-                key={error.msg}
-                initial={{ opacity: 0, transform: "scale(0)" }}
-                animate={{ opacity: 1, transform: "scale(1)" }}
-                exit={{ opacity: 0, transform: "scale(0)" }}
-              >
-                {error.msg}
-              </motion.div>
-            ))}
-          </div>
-        )}
+        {error && <ErrorAlert error={error} />}
         <div className={styles.form__container}>
           <AuthForm
             userData={userData}
