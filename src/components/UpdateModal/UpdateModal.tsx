@@ -53,7 +53,7 @@ const UpdateModal: FC<UpdateModalProps> = () => {
   }, [updateProviderIsSuccess, dispatch, reset]);
 
   const onSubmitUpdateForm = async (data: any) => {
-    if (Object.keys(errors).length === 0 && !isError) {
+    if (Object.keys(errors).length === 0) {
       await updateProvider({ providerData: data, companyId });
       dispatch(closeUpdateModal());
       reset();
@@ -90,6 +90,9 @@ const UpdateModal: FC<UpdateModalProps> = () => {
               errors={errors}
               data={data}
               btnTitle={"Update"}
+              changeName={false}
+              changeCountry={false}
+              className={styles["update-modal"]}
             />
           )
         ) : (

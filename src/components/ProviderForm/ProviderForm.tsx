@@ -18,6 +18,9 @@ interface ProviderFormProps {
   btnTitle: string;
   isLoading: boolean;
   isError: boolean;
+  changeName?: boolean;
+  changeCountry?: boolean;
+  className?: string;
 }
 
 const ProviderForm: FC<ProviderFormProps> = ({
@@ -29,58 +32,65 @@ const ProviderForm: FC<ProviderFormProps> = ({
   btnTitle,
   isError,
   isLoading,
+  changeName = true,
+  changeCountry = true,
+  className,
 }) => {
   return (
     <form onSubmit={handleSubmit}>
-      <div className={styles["form__content"]}>
-        <div className={styles["input-block"]}>
-          <label htmlFor="name">Provider name</label>
-          <input
-            id="name"
-            {...register("name", {
-              required: "Required",
-              maxLength: {
-                value: 50,
-                message: "Less than 50 characters",
-              },
-            })}
-            type="text"
-            className={clsx(
-              styles.input,
-              errors?.name || isError ? styles["input-error"] : ""
+      <div className={clsx(styles["form__content"], className)}>
+        {changeName && (
+          <div className={styles["input-block"]}>
+            <label htmlFor="name">Provider name</label>
+            <input
+              id="name"
+              {...register("name", {
+                required: "Required",
+                maxLength: {
+                  value: 50,
+                  message: "Less than 50 characters",
+                },
+              })}
+              type="text"
+              className={clsx(
+                styles.input,
+                errors?.name || isError ? styles["input-error"] : ""
+              )}
+              defaultValue={defaultValue ? data?.name : ""}
+            />
+            {errors.name && (
+              <span className={styles["error-message"]}>
+                {errors?.name?.message}
+              </span>
             )}
-            defaultValue={defaultValue ? data?.name : ""}
-          />
-          {errors.name && (
-            <span className={styles["error-message"]}>
-              {errors?.name?.message}
-            </span>
-          )}
-        </div>
-        <div className={styles["input-block"]}>
-          <label htmlFor="country">Country</label>
-          <input
-            id="country"
-            {...register("country", {
-              required: "Required",
-              maxLength: {
-                value: 50,
-                message: "Less than 50 characters",
-              },
-            })}
-            className={clsx(
-              styles.input,
-              errors?.country || isError ? styles["input-error"] : ""
+          </div>
+        )}
+        {changeCountry && (
+          <div className={styles["input-block"]}>
+            <label htmlFor="country">Country</label>
+            <input
+              id="country"
+              {...register("country", {
+                required: "Required",
+                maxLength: {
+                  value: 50,
+                  message: "Less than 50 characters",
+                },
+              })}
+              className={clsx(
+                styles.input,
+                errors?.country || isError ? styles["input-error"] : ""
+              )}
+              defaultValue={defaultValue ? data?.country : ""}
+              type="text"
+            />
+            {errors.country && (
+              <span className={styles["error-message"]}>
+                {errors.country.message}
+              </span>
             )}
-            defaultValue={defaultValue ? data?.country : ""}
-            type="text"
-          />
-          {errors.country && (
-            <span className={styles["error-message"]}>
-              {errors.country.message}
-            </span>
-          )}
-        </div>
+          </div>
+        )}
         <div className={styles["input-block"]}>
           <label htmlFor="makeShare">Make Share</label>
           <input
@@ -169,7 +179,7 @@ const ProviderForm: FC<ProviderFormProps> = ({
         disabled={isLoading || Object.keys(errors).length === 0 ? false : true}
         className={clsx(
           styles["submit-btn"],
-          !isError && Object.keys(errors).length === 0 ? "" : styles.disabled
+          Object.keys(errors).length === 0 ? "" : styles.disabled
         )}
         type="submit"
       >

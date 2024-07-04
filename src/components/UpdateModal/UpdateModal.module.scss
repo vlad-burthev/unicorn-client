@@ -7,6 +7,9 @@
   overflow: hidden;
   background-color: rgba(128, 128, 128, 0.336);
 }
+.update-modal {
+  grid-template-columns: 1fr;
+}
 
 .loader {
   display: flex;

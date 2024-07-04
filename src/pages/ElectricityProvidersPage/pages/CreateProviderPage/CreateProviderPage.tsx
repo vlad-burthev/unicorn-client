@@ -20,7 +20,7 @@ const CreateProviderPage: FC<CreateProviderPageProps> = () => {
     useCreateProviderMutation();
 
   const onSubmitCreateForm = async (data: any) => {
-    if (Object.keys(errors).length === 0 && !isError) {
+    if (Object.keys(errors).length === 0) {
       await createProvider(data);
     }
   };
