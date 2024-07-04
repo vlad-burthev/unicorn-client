@@ -1,0 +1,98 @@
+@import "/src/assets/styles/variables";
+
+.create-provider {
+  padding-top: 100px;
+}
+
+.input {
+  border-radius: 8px;
+  border: none;
+  border: 1px solid $gray;
+  padding: 5px 10px;
+  margin-bottom: 20px;
+  width: 100%;
+
+  &:focus {
+    outline: 2px solid $primary;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.form__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.lable {
+  color: $gray;
+
+  font-weight: $font-weight-bold;
+}
+
+.input-block {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  &:first-child {
+    grid-column: 1 / span 2;
+  }
+}
+
+.input {
+  width: 100%;
+  &.input-error {
+    border: 1px solid $danger;
+
+    &:focus {
+      outline-color: $danger;
+    }
+  }
+}
+
+.error-message {
+  position: absolute;
+  color: $danger;
+  bottom: -5px;
+  right: 0;
+  left: 0;
+  width: 100%;
+}
+
+.submit-btn {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  background-color: $primary;
+  border: none;
+  border-radius: 8px;
+  color: $white;
+  padding: 10px 0;
+  margin-top: 40px;
+
+  &:hover {
+    background: $primary-dark;
+  }
+
+  &.disabled {
+    cursor: default;
+    background-color: $gray;
+  }
+
+  & .load {
+    opacity: 0;
+  }
+}
+
+.loader {
+  position: absolute;
+  left: 45%;
+  top: 2px;
+}

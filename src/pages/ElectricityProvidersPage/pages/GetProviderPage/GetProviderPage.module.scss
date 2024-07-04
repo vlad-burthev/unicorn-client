@@ -1,0 +1,56 @@
+@import "/src/assets/styles/variables";
+
+.empty-title {
+  padding: 20px;
+  text-align: center;
+}
+
+.table {
+  position: relative;
+
+  & tr {
+    & td,
+    th {
+      text-align: center;
+      padding: 8px;
+    }
+  }
+  & thead {
+    & tr {
+      border-bottom: 1px solid $primary;
+    }
+  }
+  border-bottom: 1px solid $primary;
+}
+
+.row {
+  &.odd-row {
+    background-color: rgba(224, 248, 236, 0.61);
+  }
+}
+
+.table-btn {
+  background-color: $danger;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  border: none;
+  border-radius: 8px;
+
+  & svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  &.update-btn {
+    background-color: $warning;
+  }
+
+  &.delete-btn {
+    background-color: $danger;
+  }
+}
+
+.error-title {
+  text-align: center;
+}

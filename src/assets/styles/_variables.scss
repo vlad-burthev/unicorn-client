@@ -1,0 +1,63 @@
+//colors
+$black: #1b2124;
+$primary: rgb(71, 209, 140);
+$primary-dark: #268d61;
+$white: hsl(60, 100%, 97%);
+
+$gray: rgb(127, 135, 158);
+$blue: rgb(31, 143, 255);
+
+$danger: rgba(255, 0, 0, 0.658);
+$danger-light: rgba(226, 65, 65, 0.658);
+
+$warning: orange;
+$warning-light: rgb(255, 197, 91);
+
+//font
+$font-family: "Poppins", sans-serif;
+
+$font-size-s: 12px;
+$font-size-m: 16px;
+$font-size-l: 20px;
+$font-size-xl: 30px;
+
+$font-weight-light: 300;
+$font-weight-medium: 400;
+$font-weight-bold: 700;
+
+@mixin base-font-style {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: $black;
+}
+
+//scrollbar
+$scrollbar-width: 12px;
+
+@mixin custom-scrollbar {
+  // Webkit browsers (Chrome, Safari)
+  &::-webkit-scrollbar {
+    width: $scrollbar-width;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $white;
+    border-radius: calc($scrollbar-width / 2);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $primary;
+    border-radius: calc($scrollbar-width / 2);
+    border: 3px solid $white;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: $primary;
+  }
+
+  // Firefox
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: $primary $white;
+  }
+}

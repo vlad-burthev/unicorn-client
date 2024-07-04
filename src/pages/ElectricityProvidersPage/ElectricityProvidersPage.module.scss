@@ -1,0 +1,47 @@
+@import "../../assets/styles/variables";
+
+.provider-page {
+  position: relative;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.6);
+  border-bottom: 1px solid $gray;
+  z-index: 10;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+
+  & > a {
+    padding: 5px 10px;
+    margin-right: 10px;
+    border-radius: 8px;
+
+    &.active-link {
+      color: $white;
+      background-color: $primary-dark;
+    }
+
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
+}
+
+.content__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}

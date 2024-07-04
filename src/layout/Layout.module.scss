@@ -1,0 +1,25 @@
+@import "/src/assets/styles/variables";
+
+.wrapper {
+  display: grid;
+  grid-template-areas:
+    "leftSidebar . ."
+    "leftSidebar container ."
+    "leftSidebar . .";
+
+  grid-template-columns: auto minmax(320px, 1000px) auto;
+  grid-template-rows: minmax(auto, 100px) 2fr minmax(auto, 100px);
+  width: 100vw;
+  height: 100vh;
+
+  column-gap: 40px;
+}
+
+.container {
+  grid-area: container;
+  background-color: #fff;
+  border-radius: 20px;
+  overflow: auto;
+
+  @include custom-scrollbar;
+}

@@ -1,0 +1,86 @@
+@import "/src/assets/styles/variables";
+
+.modal {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  overflow: hidden;
+  background-color: rgba(128, 128, 128, 0.336);
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  transform: translateY(300px);
+}
+
+.content {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: $white;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.form__content {
+  display: grid;
+  flex-direction: column;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
+
+.input-block {
+  position: relative;
+  padding: 10px 5px;
+
+  &:first-child {
+    grid-column: 1 / span 2;
+  }
+
+  & .input {
+    width: 100%;
+    border-radius: 8px;
+    padding: 5px 10px;
+    border: 1px solid $gray;
+
+    &:focus {
+      outline-color: $primary;
+    }
+  }
+}
+
+.error-message {
+  position: absolute;
+  color: $danger;
+  bottom: -10px;
+  right: 0;
+  left: 0;
+  width: 100%;
+}
+
+.submit-btn {
+  color: $white;
+  background-color: $primary;
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 0;
+  margin-top: 20px;
+
+  &:hover {
+    background-color: $primary-dark;
+  }
+
+  &.disabled {
+    cursor: default;
+    background-color: $gray;
+  }
+}
+
+.error-title {
+  text-align: center;
+}

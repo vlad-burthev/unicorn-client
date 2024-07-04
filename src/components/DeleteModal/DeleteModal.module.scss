@@ -1,0 +1,66 @@
+@import "/src/assets/styles/variables";
+
+.modal {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  overflow: hidden;
+  background-color: rgba(128, 128, 128, 0.336);
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  transform: translateY(300px);
+}
+
+.content {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: $white;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.title {
+  text-align: center;
+
+  & span {
+    color: $danger;
+    font-size: $font-size-xl;
+  }
+}
+
+.btn-block {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-evenly;
+
+  & > button {
+    color: $white;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 15px;
+    margin-top: 20px;
+  }
+}
+
+.delete-btn {
+  background-color: $danger;
+
+  &:hover {
+    background-color: $danger-light;
+  }
+}
+
+.cancel-btn {
+  background-color: $warning;
+
+  &:hover {
+    background-color: $warning-light;
+  }
+}
